@@ -63,7 +63,10 @@ function MetadataPanel({ group }: { group: WorkspaceGroup }) {
       {group.windows[0]?.["workspace-root-container-layout"] && (
         <List.Item.Detail.Metadata.Label
           title="Layout"
-          text={group.windows[0]["workspace-root-container-layout"].replace(/_/g, " ")}
+          text={group.windows[0]["workspace-root-container-layout"].replace(
+            /_/g,
+            " ",
+          )}
           icon={Icon.Sidebar}
         />
       )}
@@ -94,7 +97,10 @@ export default function Command() {
   }, []);
 
   const groups = useMemo(() => {
-    const map = new Map<string, { windows: AerospaceWindow[]; monitorId: number; monitorName: string }>();
+    const map = new Map<
+      string,
+      { windows: AerospaceWindow[]; monitorId: number; monitorName: string }
+    >();
 
     for (const w of windows) {
       const ws = w.workspace || "?";
@@ -189,7 +195,7 @@ export default function Command() {
                 onAction={() => focusWorkspace(group.name)}
               />
               <ActionPanel.Submenu
-                title="Focus Window..."
+                title="Focus Window…"
                 icon={Icon.Window}
                 shortcut={{ modifiers: ["cmd", "shift"], key: "f" }}
               >
